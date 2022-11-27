@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ORMWA_LV1</string>
+    <string name="increase_text">Povećaj</string>
+    <string name="decrease_text">Smanji</string>
+    <string name="push_text">Pritisni</string>
+    <string name="button_text">Unesi</string>
+    <string name="buttonInput_text">Izračunaj</string>
+</resources>
