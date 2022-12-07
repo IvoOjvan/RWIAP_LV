@@ -8,6 +8,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import retrofit2.Call
 
 class ProductRecyclerAdapter(private val items: List<Product>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -39,6 +40,7 @@ class ProductRecyclerAdapter(private val items: List<Product>) : RecyclerView.Ad
             Glide
                 .with(itemView.context)
                 .load(products.image_link)
+                .centerCrop()
                 .into(photoImage)
             productName.text = products.name
             productRating.text = products.rating.toString()

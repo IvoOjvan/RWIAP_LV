@@ -9,6 +9,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.HORIZONTAL
+import com.google.gson.Gson
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -19,30 +21,31 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val etBrand = findViewById<EditText>(R.id.etBrand)
-        val tv = findViewById<TextView>(R.id.textView2)
+        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+
 
         val btnSearch = findViewById<Button>(R.id.btnSearch)
         btnSearch.setOnClickListener{
 
-            Toast.makeText(this, "Clicked", Toast.LENGTH_LONG).show()
+            val brand : String = etBrand.text.toString()
 
             val request = ServiceBuilder.buildService(MakeupAPI::class.java)
-            val call = request.getProducts()
+            val call = request.getProducts(brand)
 
-            call.enqueue(object : Callback<ResponseData> {
+            call.enqueue(object : Callback<List<Product>> {
                 override fun onResponse(
-                    call: Call<ResponseData>,
-                    response: Response<ResponseData>
+                    call: Call<List<Product>>,
+                    response: Response<List<Product>>
                 ) {
                     if (response.isSuccessful) {
-                        findViewById<RecyclerView>(R.id.recyclerView).apply {
+                        recyclerView.apply {
                             layoutManager = LinearLayoutManager(this@MainActivity)
-                            adapter = ProductRecyclerAdapter(response.body()!!.data)
+                            adapter = ProductRecyclerAdapter(response.body()!!.toList())
                         }
                     }
                 }
 
-                override fun onFailure(call: Call<ResponseData>, t: Throwable) {
+                override fun onFailure(call: Call<List<Product>>, t: Throwable) {
                     Log.d("FAIL", t.message.toString())
                 }
             })
