@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.firestore.DocumentId
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
@@ -48,24 +49,18 @@ class MainActivity : AppCompatActivity(),
         val etImageURL = findViewById<EditText>(R.id.etImageUrl)
         val etPersonName = findViewById<EditText>(R.id.etName)
         val etDesc = findViewById<EditText>(R.id.etDesc)
+
         val buttonSave = findViewById<Button>(R.id.buttonSave)
         buttonSave.setOnClickListener{
-
-            val person = Person(
-                "3",
-                etImageURL.text.toString(),
-                etPersonName.text.toString(),
-                etDesc.text.toString(),
+            val newDocument = db.collection("persons").document()
+            newDocument.set(
+                Person(
+                    newDocument.id.toString(),
+                    etImageURL.text.toString(),
+                    etPersonName.text.toString(),
+                    etDesc.text.toString()
+                )
             )
-            //db.collection("persons").add(person)
-            db.collection("persons").add(person)
-                .addOnSuccessListener {
-                    documentReference->
-                    Log.d(TAG, "Add")
-                }
-                .addOnFailureListener{
-                    e -> Log.w(TAG, "Error",e)
-                }
 
             db.collection("persons")
                 .get()
@@ -89,7 +84,6 @@ class MainActivity : AppCompatActivity(),
                     Log.w("MainActivity", "Error getting documents.",
                         exception)
                 }
-
         }
     }
     override fun onItemButtonClick(index: Int, person: Person, clickType:
