@@ -34,8 +34,7 @@ class MainActivity : AppCompatActivity(),
                         personList.add(person)
                     }
                 }
-                recyclerAdapter = PersonRecyclerAdapter(personList,
-                    this@MainActivity)
+                recyclerAdapter = PersonRecyclerAdapter(personList, this@MainActivity)
                 recyclerView.apply {
                     layoutManager = LinearLayoutManager(this@MainActivity)
                     adapter = recyclerAdapter
@@ -53,37 +52,14 @@ class MainActivity : AppCompatActivity(),
         val buttonSave = findViewById<Button>(R.id.buttonSave)
         buttonSave.setOnClickListener{
             val newDocument = db.collection("persons").document()
-            newDocument.set(
-                Person(
-                    newDocument.id.toString(),
-                    etImageURL.text.toString(),
-                    etPersonName.text.toString(),
-                    etDesc.text.toString()
-                )
+            val person = Person(
+                newDocument.id.toString(),
+                etImageURL.text.toString(),
+                etPersonName.text.toString(),
+                etDesc.text.toString()
             )
-
-            db.collection("persons")
-                .get()
-                .addOnSuccessListener { result ->
-                    val personList = ArrayList<Person>()
-                    for (data in result.documents) {
-                        val person = data.toObject(Person::class.java)
-                        if (person != null) {
-                            person.id = data.id
-                            personList.add(person)
-                        }
-                    }
-                    recyclerAdapter = PersonRecyclerAdapter(personList,
-                        this@MainActivity)
-                    recyclerView.apply {
-                        layoutManager = LinearLayoutManager(this@MainActivity)
-                        adapter = recyclerAdapter
-                    }
-                }
-                .addOnFailureListener { exception ->
-                    Log.w("MainActivity", "Error getting documents.",
-                        exception)
-                }
+            newDocument.set(person)
+            recyclerAdapter.addItem(person)
         }
     }
     override fun onItemButtonClick(index: Int, person: Person, clickType:

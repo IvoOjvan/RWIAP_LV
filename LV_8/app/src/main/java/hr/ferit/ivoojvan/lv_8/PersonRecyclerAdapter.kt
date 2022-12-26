@@ -40,18 +40,19 @@ class PersonRecyclerAdapter (
         notifyItemRemoved(index)
         notifyItemRangeChanged(index, items.size)
     }
+    fun addItem(person:Person){
+        items.add(person)
+        notifyItemInserted(items.indexOf(person))
+        notifyItemRangeChanged(items.indexOf(person), items.size)
+    }
 
     class PersonViewHolder(val view: View): RecyclerView.ViewHolder(view) {
-        private val personImage =
-            view.findViewById<ImageView>(R.id.personImage)
-        private val personName =
-            view.findViewById<TextView>(R.id.personName)
-        private val personDescription =
-            view.findViewById<TextView>(R.id.personDescription)
-        private val editBtn =
-            view.findViewById<ImageButton>(R.id.editButton)
-        private val deleteBtn =
-            view.findViewById<ImageButton>(R.id.deleteButton)
+        private val personImage = view.findViewById<ImageView>(R.id.personImage)
+        private val personName = view.findViewById<TextView>(R.id.personName)
+        private val personDescription = view.findViewById<TextView>(R.id.personDescription)
+        private val editBtn = view.findViewById<ImageButton>(R.id.editButton)
+        private val deleteBtn = view.findViewById<ImageButton>(R.id.deleteButton)
+
         fun bind(
             index: Int,
             listener: ContentListener,
