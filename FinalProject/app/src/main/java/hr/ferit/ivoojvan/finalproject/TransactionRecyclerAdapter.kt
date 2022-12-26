@@ -39,33 +39,19 @@ class TransactionRecyclerAdapter(val items:ArrayList<Transaction>): RecyclerView
 
         fun bind(index: Int, transaction: Transaction){
 
-            val db = Firebase.firestore
-            var bankAccount = BankAccount()
+            val sb = StringBuilder()
+            sb.append(transaction.describtion + " ").append(transaction.target + "\n")
+                .append(transaction.payer)
+            describtion.text = sb.toString()
 
-            db.collection("BankAccounts")
-                .document(transaction.accountId.toString())
-                .get()
-                .addOnSuccessListener { document ->
-                    if(document != null){
-                        bankAccount = document.toObject(BankAccount::class.java)!!
-                    }
+            sb.clear()
+            sb.append(transaction.amount.toString() + " ").append(transaction.currency + "\n")
+            status.text = sb.toString()
 
-                    val sb = StringBuilder()
-                    sb.append(transaction.describtion + " ").append(transaction.target + "\n")
-                        .append(transaction.payer)
-                    describtion.text = sb.toString()
-
-                    sb.clear()
-                    sb.append(transaction.amount.toString() + " ").append(transaction.currency + "\n")
-                        .append(bankAccount.amount + " ").append(transaction.currency)
-                    status.text = sb.toString()
-
-                    val parts = transaction.date?.split("-")
-                    sb.clear()
-                    sb.append(parts?.get(2) + "\n").append(month(parts?.get(1).toString().toInt()))
-                    date.text = sb.toString()
-
-                }.addOnFailureListener {  }
+            val parts = transaction.date?.split("-")
+            sb.clear()
+            sb.append(parts?.get(2) + "\n").append(month(parts?.get(1).toString().toInt()))
+            date.text = sb.toString()
 
         }
 

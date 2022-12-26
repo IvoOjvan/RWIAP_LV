@@ -139,6 +139,26 @@ class AccountFragment : Fragment() {
                     TODO("Not yet implemented")
                 }
             })
+
+            db.collection("transactions")
+                .get()
+                .addOnSuccessListener { result ->
+                    val transactions = ArrayList<Transaction>()
+                    for(data in result.documents){
+                        val transaction = data.toObject(Transaction::class.java)
+                        if(transaction != null && transaction.accountId == bankAccounts[position].id)
+                            transactions.add(transaction)
+                    }
+
+                    recyclerAdapter = TransactionRecyclerAdapter(transactions)
+                    transactionRecycler.apply {
+                        layoutManager = LinearLayoutManager(context)
+                        adapter = recyclerAdapter
+                    }
+                }
+                .addOnFailureListener {  }
+
+
         }
 
         imgBtnAccountDropdowns.setOnClickListener {

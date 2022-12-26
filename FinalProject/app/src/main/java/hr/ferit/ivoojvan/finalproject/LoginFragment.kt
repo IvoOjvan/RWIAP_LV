@@ -54,6 +54,21 @@ class LoginFragment : Fragment() {
 
         btnLoginOK.setOnClickListener {
             if(etPIN.text.toString() == "1234"){
+                val fragment = arguments?.getString("fragment")
+                if(fragment == "payment"){
+                    val fragmentTransaction : FragmentTransaction? = activity?.supportFragmentManager?.beginTransaction()
+                    fragmentTransaction?.replace(R.id.fragment_layout, PaymentFragment())
+                    fragmentTransaction?.commit()
+                }else if(fragment == "token"){
+                    val fragmentTransaction : FragmentTransaction? = activity?.supportFragmentManager?.beginTransaction()
+                    fragmentTransaction?.replace(R.id.fragment_layout, TokenFragment())
+                    fragmentTransaction?.commit()
+
+                }else if(fragment == "account"){
+                    val fragmentTransaction : FragmentTransaction? = activity?.supportFragmentManager?.beginTransaction()
+                    fragmentTransaction?.replace(R.id.fragment_layout, AccountFragment())
+                    fragmentTransaction?.commit()
+                }
                 Toast.makeText(context, "Radi PIN", Toast.LENGTH_LONG).show()
             }
         }

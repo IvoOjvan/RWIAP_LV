@@ -74,35 +74,60 @@ class MainFragment : Fragment() {
 
         //Start payment fragment
         imgBtnPayment.setOnClickListener {
+            val loginFragment = LoginFragment()
+            val bundle = Bundle()
+            bundle.putString("fragment", "payment")
+            loginFragment.arguments = bundle
+
             val fragmentTransaction : FragmentTransaction? = activity?.supportFragmentManager?.beginTransaction()
-            fragmentTransaction?.replace(R.id.fragment_layout, PaymentFragment())
+            fragmentTransaction?.replace(R.id.fragment_layout, loginFragment)
             fragmentTransaction?.commit()
         }
 
         tvPayment.setOnClickListener {
+            val loginFragment = LoginFragment()
+            val bundle = Bundle()
+            bundle.putString("fragment", "payment")
+            loginFragment.arguments = bundle
+
             val fragmentTransaction : FragmentTransaction? = activity?.supportFragmentManager?.beginTransaction()
-            fragmentTransaction?.replace(R.id.fragment_layout, PaymentFragment())
+            fragmentTransaction?.replace(R.id.fragment_layout, loginFragment)
             fragmentTransaction?.commit()
         }
 
 
         //Start token fragment
         imgBtnToken.setOnClickListener {
+            val loginFragment = LoginFragment()
+            val bundle = Bundle()
+            bundle.putString("fragment", "token")
+            loginFragment.arguments = bundle
+
             val fragmentTransaction : FragmentTransaction? = activity?.supportFragmentManager?.beginTransaction()
-            fragmentTransaction?.replace(R.id.fragment_layout, TokenFragment())
+            fragmentTransaction?.replace(R.id.fragment_layout, loginFragment)
             fragmentTransaction?.commit()
         }
 
         tvToken.setOnClickListener {
+            val loginFragment = LoginFragment()
+            val bundle = Bundle()
+            bundle.putString("fragment", "token")
+            loginFragment.arguments = bundle
+
             val fragmentTransaction : FragmentTransaction? = activity?.supportFragmentManager?.beginTransaction()
-            fragmentTransaction?.replace(R.id.fragment_layout, TokenFragment())
+            fragmentTransaction?.replace(R.id.fragment_layout, loginFragment)
             fragmentTransaction?.commit()
         }
 
         //login
         btnLogin.setOnClickListener {
+            val loginFragment = LoginFragment()
+            val bundle = Bundle()
+            bundle.putString("fragment", "account")
+            loginFragment.arguments = bundle
+
             val fragmentTransaction : FragmentTransaction? = activity?.supportFragmentManager?.beginTransaction()
-            fragmentTransaction?.replace(R.id.fragment_layout, AccountFragment())
+            fragmentTransaction?.replace(R.id.fragment_layout, loginFragment)
             fragmentTransaction?.commit()
         }
        
