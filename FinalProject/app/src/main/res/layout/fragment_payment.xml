@@ -24,6 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/payment"
+        android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -40,17 +41,17 @@
         android:text="@string/choice"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.087"
+        app:layout_constraintHorizontal_bias="0.099"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.153" />
+        app:layout_constraintVertical_bias="0.155" />
 
     <AutoCompleteTextView
         android:id="@+id/autoCompleteTextViewAccount"
         android:layout_width="287dp"
         android:layout_height="45dp"
         android:hint="Select account"
-
+        android:backgroundTint="@color/login_button_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.25"
@@ -90,6 +91,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:hint="0.00"
+        android:backgroundTint="@color/login_button_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.154"
@@ -116,6 +118,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:text="HRK"
+        android:backgroundTint="@color/login_button_color"
         android:focusable="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -131,10 +134,10 @@
         android:text="@string/target"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.087"
+        app:layout_constraintHorizontal_bias="0.137"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.519" />
+        app:layout_constraintVertical_bias="0.522" />
 
     <AutoCompleteTextView
         android:id="@+id/autoCompleteTextViewReason"
@@ -142,6 +145,7 @@
         android:layout_height="47dp"
         android:hint="Zbog sira"
         android:focusable="false"
+        android:backgroundTint="@color/login_button_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.142"
@@ -151,17 +155,18 @@
 
     <EditText
         android:id="@+id/etReciver"
-        android:layout_width="wrap_content"
+        android:layout_width="287dp"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/login_button_color"
         android:ems="10"
+        android:hint="Primatelj"
         android:inputType="textPersonName"
-        android:hint="Tvoja mama"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.154"
+        app:layout_constraintHorizontal_bias="0.258"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.596" />
+        app:layout_constraintVertical_bias="0.597" />
 
     <TextView
         android:id="@+id/textView21"
@@ -190,13 +195,15 @@
 
     <Button
         android:id="@+id/buttonPay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="354dp"
+        android:layout_height="52dp"
+        android:background="@drawable/login_button"
         android:text="PLATI"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.473"
+        app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.932" />
+        app:layout_constraintVertical_bias="0.95" />
 </androidx.constraintlayout.widget.ConstraintLayout>

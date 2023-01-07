@@ -52,6 +52,7 @@ class AccountFragment : Fragment() {
                     ibans.add(bankAccount?.iban.toString())
                     if(bankAccount != null)
                         bankAccounts.add(bankAccount)
+
                 }
 
                 val accountAdapter = ArrayAdapter(view.context, android.R.layout.simple_list_item_1, ibans)
@@ -62,6 +63,7 @@ class AccountFragment : Fragment() {
                 tvIBAN.text = bankAccounts[0].iban.toString()
                 tvAmount.text = bankAccounts[0].amount + "HRK"
 
+                accountsDropdown.setText(accountsDropdown.adapter.getItem(0).toString(), false)
 
                 val request = ServiceBuilder.buildService(ExchangeRateAPI::class.java)
                 val call = request.getNewCurrency("HRK", "EUR", bankAccounts[0].amount.toString())
@@ -94,10 +96,10 @@ class AccountFragment : Fragment() {
                     val transactions = ArrayList<Transaction>()
                     for(data in result.documents){
                         val transaction = data.toObject(Transaction::class.java)
-                        if(transaction != null && transaction.accountId == bankAccounts[0].id)
+                        if(transaction != null && transaction.accountId == bankAccounts[0].id){
                             transactions.add(transaction)
+                        }
                     }
-
                     recyclerAdapter = TransactionRecyclerAdapter(transactions)
                     transactionRecycler.apply {
                         layoutManager = LinearLayoutManager(context)
@@ -107,16 +109,11 @@ class AccountFragment : Fragment() {
                 .addOnFailureListener {  }
 
 
-
-
-
-
         imgBtnBack.setOnClickListener {
             val fragmentTransaction : FragmentTransaction? = activity?.supportFragmentManager?.beginTransaction()
             fragmentTransaction?.replace(R.id.fragment_layout, MainFragment())
             fragmentTransaction?.commit()
         }
-
 
         accountsDropdown.setOnItemClickListener { parent, view, position, id ->
             tvAccountName.text = bankAccounts[position].name

@@ -26,12 +26,18 @@
     <string name="wrk_hrs_week">PON - PET 8:00 - 21:00</string>
     <string name="wrk_hrs_weekend">SUB 8:00 - 14:00</string>
     <string name="payment">IZIPAY</string>
-    <string name="choice">ODABIR</string>
-    <string name="target">PRIMATELJ</string>
+    <string name="choice">Odaberite račun</string>
+    <string name="target">IME I PREZIME PRIMATELJA</string>
     <string name="reason">RAZLOG</string>
     <string name="serial_number">Serijski broj: </string>
     <string name="token">Token: </string>
     <string name="mtoken">M-TOKENI</string>
     <string name="loginX">X</string>
     <string name="loginOK">OK</string>
+    <string name="zaba">m-zaba</string>
+    <string name="slogan">Banka na dlanu!</string>
+    <string name="pin">UNESITE PIN</string>
+    <string name="login">Prijava</string>
+    <string name="token_gen">GENERIRAJ</string>
+    <string name="accounts">RAČUNI</string>
 </resources>

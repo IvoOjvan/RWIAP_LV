@@ -5,4 +5,4 @@ data class ConvertedCurrency(
     val new_currency : String,
     val old_currency : String,
     val old_amount : Double
-)
+    )
